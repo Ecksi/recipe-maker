@@ -1,16 +1,25 @@
 <script>
-  export default {
-    name: 'Header'
-  }
+export default {
+  name: 'Header'
+}
 </script>
 
 <template>
-  <div>
-    <img src="https://via.placeholder.com/150" alt="placeholder img">
-    <ul>
-      <li>Add Recipes</li>
-      <li>View Recipes</li>
-      <li>Search Input</li>
-    </ul>
-  </div>
+  <header>
+    <img src="https://via.placeholder.com/75" alt="placeholder img">
+    <nav class="navigation">
+      <router-link to="/add">Add Recipes</router-link>
+      <router-link to="/">View Recipes</router-link>
+      <label>
+        <input type="text" placeholder="Search">
+      </label>
+    </nav>
+  </header>
 </template>
+
+<style scoped>
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>

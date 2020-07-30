@@ -5,7 +5,16 @@ export default {
 </script>
 
 <template>
-  <div>
+  <footer>
     <h4>Recipe Maker 2020</h4>
-  </div>
+  </footer>
 </template>
+
+<style scoped>
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+</style>

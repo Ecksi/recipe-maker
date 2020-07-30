@@ -12,9 +12,27 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="site-container">
     <Header />
     <router-view />
     <Footer />
   </div>
 </template>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-container {
+    position: relative;
+    min-height: 100%;
+  }
+</style>
