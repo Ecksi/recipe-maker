@@ -1,5 +1,17 @@
+<script>
+import Header from '@/components/atoms/Header'
+
+export default {
+  name: 'App',
+  components: {
+    Header
+  }
+}
+</script>
+
 <template>
   <div>
-    <router-view/>
+    <Header />
+    <router-view />
   </div>
 </template>
