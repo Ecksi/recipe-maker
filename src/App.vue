@@ -34,5 +34,9 @@ export default {
   .site-container {
     position: relative;
     min-height: 100%;
+    background-image: url("./assets/img/food-bg.jpg");
+    background-color: #EEE;
+    background-position: center;
+    background-repeat: repeat;
   }
 </style>
