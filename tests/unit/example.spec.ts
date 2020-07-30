@@ -1,13 +1,12 @@
 import { expect } from 'chai'
 import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import Home from '@/views/Home.vue'
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
-    })
-    expect(wrapper.text()).to.include(msg)
+describe('Home', () => {
+  it('has the homepage text', () => {
+    const wrapper = shallowMount(Home)
+    const result = 'I am the landing page'
+
+    expect(wrapper.find('h1').text()).to.be.equal(result)
   })
 })
