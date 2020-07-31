@@ -6,7 +6,7 @@ export default {
 
 <template>
   <footer>
-    <h4>Recipe Maker 2020</h4>
+    <span>&#169; Recipe Maker 1990-2020 Legal Text along with Terms and Condtions Yada Yada</span>
   </footer>
 </template>
 
@@ -14,7 +14,12 @@ export default {
   footer {
     position: absolute;
     bottom: 0;
+    margin: 16px 0;
     width: 100%;
     text-align: center;
+  }
+
+  span {
+    font-size: 12px;
   }
 </style>
