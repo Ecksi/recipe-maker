@@ -6,7 +6,9 @@ export default {
 
 <template>
   <header>
-    <img class="food-logo" src="../../assets/img/food-logo.png" alt="placeholder img">
+    <router-link to='/'>
+      <img class="food-logo" src="../../assets/img/food-logo.png" alt="placeholder img">
+    </router-link>
     <nav class="navigation">
       <router-link to="/add">Add Recipes</router-link>
       <router-link to="/view">View Recipes</router-link>
@@ -37,12 +39,6 @@ export default {
     font-weight: 600;
     color: inherit;
     text-decoration: inherit;
-  }
-
-  input {
-    padding: 8px;
-    background: transparent;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .1);
   }
 
   .food-logo {
