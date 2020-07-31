@@ -17,7 +17,21 @@ export default new Vuex.Store({
     ]
   },
   getters: {
+    getBurgers (state) {
+      return state.recipes.filter(recipe => recipe.title.includes('Burger'))
+    },
+    getAlphaSorted (state) {
+      const sortedTitles = state.recipes.map(recipe => recipe.title).sort()
+      const sortedRecipes = sortedTitles.map(recipe => state.recipes.find(rep => rep.title === recipe))
 
+      return sortedRecipes
+    },
+    getReverseAlphaSorted (state) {
+      const sortedTitles = state.recipes.map(recipe => recipe.title).sort().reverse()
+      const sortedRecipes = sortedTitles.map(recipe => state.recipes.find(rep => rep.title === recipe))
+
+      return sortedRecipes
+    }
   },
   mutations: {
     addRecipe (state, recipe) {
