@@ -1,11 +1,22 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
+import Modal from '@/components/molecules/Modal'
 
 export default {
   name: 'ViewRecipes',
+  components: {
+    Modal
+  },
   data () {
     return {
-      currentRecipes: ''
+      currentRecipes: '',
+      isModalOpen: false,
+      currentRecipe: {
+        title: '',
+        imgUrl: '',
+        difficulty: '',
+        instructions: ''
+      }
     }
   },
   computed: {
@@ -13,6 +24,17 @@ export default {
     ...mapGetters(['sortByBurgers', 'sortByAlpha', 'sortByReverseAlpha', 'sortByDifficulty'])
   },
   methods: {
+    updateRecipes (recipe) {
+      this.currentRecipe.title = recipe.title
+      this.currentRecipe.imgUrl = recipe.imgUrl
+      this.currentRecipe.difficulty = recipe.difficulty
+      this.currentRecipe.instructions = recipe.instructions
+    },
+    viewRecipe (recipe) {
+      this.updateRecipes(recipe)
+      console.log(recipe)
+      this.isModalOpen = true
+    }
   },
   created () {
     this.currentRecipes = this.recipes
@@ -22,6 +44,13 @@ export default {
 
 <template>
   <div class="view-recipes">
+    <Modal v-if="isModalOpen" @closeModal="isModalOpen=false">
+      <h2>{{ currentRecipe.title }}</h2>
+      <span>Difficulty Rating: {{ currentRecipe.difficulty }}</span><br />
+      <img :src="currentRecipe.imgUrl" width="150" alt="">
+      <!-- setup if statement to pull placeholder image if no url is provided -->
+      <p>Directions: {{ currentRecipe.instructions }}</p>
+    </Modal>
     <button @click="currentRecipes=sortByBurgers()">Burgers</button>
     <button @click="currentRecipes=sortBy('title')">Title A-Z</button>
     <button @click="currentRecipes=sortByReverseAlpha()">Title Z-A</button>
@@ -31,7 +60,7 @@ export default {
       <span>Title</span>
       <span>Difficulty</span>
     </div>
-    <ul class="recipe-list" v-for="(recipe, index) in currentRecipes" :key="index">
+    <ul class="recipe-list" @click="viewRecipe(recipe)" v-for="(recipe, index) in currentRecipes" :key="index">
       <li>{{ recipe.title }}</li>
       <li>{{ recipe.difficulty }}</li>
     </ul>

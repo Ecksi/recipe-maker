@@ -8,31 +8,31 @@ export default new Vuex.Store({
     recipes: [
       {
         title: 'Raspberry Icebox Cake',
-        imgUrl: '',
+        imgUrl: 'https://bit.ly/2DkVWIa',
         difficulty: '3',
         instructions: 'Buy jello, cool-whip, and grahmn crackers. Put everything in a pot and then look up the actual recipe.'
       },
       {
         title: 'Around the world oatmeal',
-        imgUrl: '',
+        imgUrl: 'https://bit.ly/2DkVWIa',
         difficulty: '2',
         instructions: 'In a pot combine oatmeal, chocolate chunks, cayenne pepper, and milk. Over medium heat, cook for 10 minutes.'
       },
       {
         title: 'New Bacon-ings Burger',
-        imgUrl: '',
+        imgUrl: 'https://bit.ly/2DkVWIa',
         difficulty: '1',
         instructions: 'Make burger, add bacon, cheese optional. Enjoy your new bacon-ings'
       },
       {
         title: 'Fig-eta Bout It Burger',
-        imgUrl: '',
+        imgUrl: 'https://bit.ly/2DkVWIa',
         difficulty: '4',
         instructions: 'Cook burger to desired temperature, add fig sauce.'
       },
       {
         title: 'Shake Your Honeymaker Burger',
-        imgUrl: '',
+        imgUrl: 'https://bit.ly/2DkVWIa',
         difficulty: '5',
         instructions: 'Something something hamburger, add honey mustard'
       }
