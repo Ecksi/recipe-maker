@@ -30,18 +30,27 @@ export default {
 
       this.checkForErrors()
 
-      Object.values(this.errors).indexOf(false) > -1
-        ? console.log('you have errors')
-        : this.addRecipe(recipe)
+      if (Object.values(this.errors).includes(true)) return
+
+      this.addRecipe(recipe)
+      alert(recipe.title + ' has been added to your recipes')
+      this.clearForm()
     },
     updateStarValue () {
+      if (document.querySelector('[name="rating"]:checked') === null) return
+
       this.difficulty = document.querySelector('[name="rating"]:checked').value
     },
     checkForErrors () {
-      console.log('here', Object.keys(this.errors))
       this.title.length ? this.errors.title = false : this.errors.title = true
       this.difficulty.length ? this.errors.difficulty = false : this.errors.difficulty = true
       this.instructions.length ? this.errors.instructions = false : this.errors.instructions = true
+    },
+    clearForm () {
+      this.title = ''
+      this.imageUrl = ''
+      this.difficulty = ''
+      this.instructions = ''
     }
   }
 }
@@ -63,11 +72,11 @@ export default {
       <section class="difficulty">
         <span class="difficulty-label">Difficulty:</span>
         <span class="rating-star">
-          <input type="radio" name="rating" value="5" class="foo"><span class="star"></span>
-          <input type="radio" name="rating" value="4" class="foo"><span class="star"></span>
-          <input type="radio" name="rating" value="3" class="foo"><span class="star"></span>
-          <input type="radio" name="rating" value="2" class="foo"><span class="star"></span>
-          <input type="radio" name="rating" value="1" class="foo"><span class="star"></span>
+          <input type="radio" name="rating" value="5"><span class="star"></span>
+          <input type="radio" name="rating" value="4"><span class="star"></span>
+          <input type="radio" name="rating" value="3"><span class="star"></span>
+          <input type="radio" name="rating" value="2"><span class="star"></span>
+          <input type="radio" name="rating" value="1"><span class="star"></span>
         </span>
       </section>
       <label for="recipe-instructions">
