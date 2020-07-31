@@ -20,15 +20,13 @@ export default {
 </template>
 
 <style>
-  * {
-    box-sizing: border-box;
-  }
-
   html, body {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   .site-container {
