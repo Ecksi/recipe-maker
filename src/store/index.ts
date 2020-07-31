@@ -8,27 +8,66 @@ export default new Vuex.Store({
     recipes: [
       {
         title: 'Raspberry Icebox Cake',
+        imgUrl: '',
+        difficulty: '3',
         instructions: 'Buy jello, cool-whip, and grahmn crackers. Put everything in a pot and then look up the actual recipe.'
       },
       {
         title: 'Around the world oatmeal',
+        imgUrl: '',
+        difficulty: '2',
         instructions: 'In a pot combine oatmeal, chocolate chunks, cayenne pepper, and milk. Over medium heat, cook for 10 minutes.'
+      },
+      {
+        title: 'New Bacon-ings Burger',
+        imgUrl: '',
+        difficulty: '1',
+        instructions: 'Make burger, add bacon, cheese optional. Enjoy your new bacon-ings'
+      },
+      {
+        title: 'Fig-eta Bout It Burger',
+        imgUrl: '',
+        difficulty: '4',
+        instructions: 'Cook burger to desired temperature, add fig sauce.'
+      },
+      {
+        title: 'Shake Your Honeymaker Burger',
+        imgUrl: '',
+        difficulty: '5',
+        instructions: 'Something something hamburger, add honey mustard'
       }
     ]
   },
   getters: {
-    getBurgers (state) {
+    sortByBurgers (state) {
       return state.recipes.filter(recipe => recipe.title.includes('Burger'))
     },
-    getAlphaSorted (state) {
+    // I believe these sortBy getters can be refactored into a single getter
+    // sortBy (state, sortBy, reverse) {
+    //   console.log('hi', state, sortBy, reverse)
+    //   const sortedArray = state.recipes.map(recipe => recipe[sortBy]).sort()
+
+    //   if (reverse) sortedArray.reverse()
+
+    //   const sortedObject = sortedArray.map(recipe => state.recipes.find(rep => rep[sortBy] === recipe))
+
+    //   return sortedObject
+    // },
+    sortByAlpha (state) {
       const sortedTitles = state.recipes.map(recipe => recipe.title).sort()
       const sortedRecipes = sortedTitles.map(recipe => state.recipes.find(rep => rep.title === recipe))
 
       return sortedRecipes
     },
-    getReverseAlphaSorted (state) {
+    sortByReverseAlpha (state) {
       const sortedTitles = state.recipes.map(recipe => recipe.title).sort().reverse()
       const sortedRecipes = sortedTitles.map(recipe => state.recipes.find(rep => rep.title === recipe))
+
+      return sortedRecipes
+    },
+    sortByDifficulty (state) {
+      const sortedDifficulties = state.recipes.map(recipe => recipe.difficulty).sort()
+      const sortedRecipes = sortedDifficulties.map(recipe => state.recipes.find(rep => rep.difficulty === recipe))
 
       return sortedRecipes
     }
