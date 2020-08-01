@@ -20,10 +20,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(['recipes']),
-    ...mapGetters(['sortByBurgers', 'sortByAlpha', 'sortByReverseAlpha', 'sortByDifficulty'])
+    ...mapState(['recipes'])
   },
   methods: {
+    ...mapGetters(['sortByBurgers', 'sortByAlpha', 'sortByReverseAlpha', 'sortByDifficulty']),
     updateRecipes (recipe) {
       this.currentRecipe.title = recipe.title
       this.currentRecipe.imgUrl = recipe.imgUrl
@@ -32,7 +32,6 @@ export default {
     },
     viewRecipe (recipe) {
       this.updateRecipes(recipe)
-      console.log(recipe)
       this.isModalOpen = true
     }
   },
@@ -47,14 +46,14 @@ export default {
     <Modal v-if="isModalOpen" @closeModal="isModalOpen=false">
       <h2>{{ currentRecipe.title }}</h2>
       <span>Difficulty Rating: {{ currentRecipe.difficulty }}</span><br />
-      <img :src="currentRecipe.imgUrl" width="150" alt="">
+      <img :src="currentRecipe.imgUrl" width="150" alt="Picture of food">
       <!-- setup if statement to pull placeholder image if no url is provided -->
       <p>Directions: {{ currentRecipe.instructions }}</p>
     </Modal>
     <button @click="currentRecipes=sortByBurgers()">Burgers</button>
-    <button @click="currentRecipes=sortBy('title')">Title A-Z</button>
+    <button @click="currentRecipes=sortByAlpha()">Title A-Z</button>
     <button @click="currentRecipes=sortByReverseAlpha()">Title Z-A</button>
-    <button @click="currentRecipes=sortBy('difficulty')">Difficulty</button>
+    <button @click="currentRecipes=sortByDifficulty()">Difficulty</button>
     <h1>Look at all the food!</h1>
     <div class="top-banner">
       <span>Title</span>
@@ -82,7 +81,7 @@ export default {
     justify-content: space-between;
     padding: 12px;
     font-weight: bold;
-    background-color: cornflowerblue;
+    background-color: #75a6ff6b;
     border: 1px solid black;
   }
 

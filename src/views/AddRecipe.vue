@@ -6,7 +6,7 @@ export default {
   data () {
     return {
       title: '',
-      imageUrl: '',
+      imgUrl: '',
       difficulty: '',
       instructions: '',
       errors: {
@@ -23,7 +23,7 @@ export default {
     onSubmit () {
       const recipe = {
         title: this.title,
-        imageUrl: this.imageUrl,
+        imgUrl: this.imgUrl,
         difficulty: this.difficulty,
         instructions: this.instructions
       }
@@ -48,7 +48,7 @@ export default {
     },
     clearForm () {
       this.title = ''
-      this.imageUrl = ''
+      this.imggUrl = ''
       this.difficulty = ''
       this.instructions = ''
     }
@@ -67,11 +67,11 @@ export default {
       <label for="recipe-img">
         <!-- if no image use placehodler for default -->
         <span>Image:</span>
-        <input id="recipe-img" v-model="imageUrl" type="text" placeholder="Add img url">
+        <input id="recipe-img" v-model="imgUrl" type="text" placeholder="Add img url">
       </label>
       <section class="difficulty">
         <span class="difficulty-label">Difficulty:</span>
-        <span class="rating-star">
+        <span class="rating-star" :class="{'rating-error': errors.difficulty}">
           <input type="radio" name="rating" value="5"><span class="star"></span>
           <input type="radio" name="rating" value="4"><span class="star"></span>
           <input type="radio" name="rating" value="3"><span class="star"></span>
@@ -133,11 +133,16 @@ export default {
 
   .rating-star {
     display: inline-block;
-    width: calc(100% - 150px);
+    width: 200px;
     direction: rtl;
     font-size: 30px;
     text-align: center;
-    margin-left: 24px;
+    margin-left: 36px;
+  }
+
+  .rating-error {
+    border: 2px solid salmon;
+    border-radius: 8px;
   }
 
   .rating-star input {
