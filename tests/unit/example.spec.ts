@@ -5,7 +5,7 @@ import Home from '@/views/Home.vue'
 describe('Home', () => {
   it('has the homepage text', () => {
     const wrapper = shallowMount(Home)
-    const result = 'I am the landing page'
+    const result = 'Welcome to the recipe maker...'
 
     expect(wrapper.find('h1').text()).to.be.equal(result)
   })
