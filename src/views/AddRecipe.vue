@@ -71,7 +71,7 @@ export default {
       </label>
       <section class="difficulty">
         <span class="difficulty-label">Difficulty:</span>
-        <span class="rating-star">
+        <span class="rating-star" :class="{'rating-error': errors.difficulty}">
           <input type="radio" name="rating" value="5"><span class="star"></span>
           <input type="radio" name="rating" value="4"><span class="star"></span>
           <input type="radio" name="rating" value="3"><span class="star"></span>
@@ -133,11 +133,16 @@ export default {
 
   .rating-star {
     display: inline-block;
-    width: calc(100% - 150px);
+    width: 200px;
     direction: rtl;
     font-size: 30px;
     text-align: center;
-    margin-left: 24px;
+    margin-left: 36px;
+  }
+
+  .rating-error {
+    border: 2px solid salmon;
+    border-radius: 8px;
   }
 
   .rating-star input {
