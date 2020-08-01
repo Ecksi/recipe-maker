@@ -1,29 +1,17 @@
 # recipe-maker
 
-## Project setup
+Welcome to the recipe-maker code challenge~
+
+To run this project, clone the repo down and run the following commands
+
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
+Alternatively you can visit `https://recipe-maker.surge.sh/`
 
-### Compiles and minifies for production
-```
-npm run build
-```
+To run the test suite use the following command
 
-### Run your unit tests
 ```
 npm run test:unit
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
