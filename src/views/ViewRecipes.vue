@@ -33,6 +33,9 @@ export default {
     viewRecipe (recipe) {
       this.updateRecipes(recipe)
       this.isModalOpen = true
+    },
+    printRecipe () {
+      window.print()
     }
   },
   created () {
@@ -48,6 +51,7 @@ export default {
       <span>Difficulty Rating: {{ currentRecipe.difficulty }}</span><br />
       <img :src="currentRecipe.imgUrl" width="150"><!-- alt attribute was left out so no placeholder text would show up if an image was not included -->
       <p>Directions: {{ currentRecipe.instructions }}</p>
+      <button class="print-recipe" @click="printRecipe()">Print Recipe</button>
     </Modal>
     <button @click="currentRecipes=sortByBurgers()">Burgers</button>
     <button @click="currentRecipes=sortByAlpha()">Title A-Z</button>
@@ -120,6 +124,10 @@ export default {
 
     .top-banner {
       width: 85%;
+    }
+
+    .print-recipe {
+      display: none
     }
   }
 </style>
