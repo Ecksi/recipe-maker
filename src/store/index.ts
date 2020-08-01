@@ -39,20 +39,13 @@ export default new Vuex.Store({
     ]
   },
   getters: {
+    searchList (state) {
+      return state.recipes.map(recipe => recipe.title)
+    },
     sortByBurgers (state) {
       return state.recipes.filter(recipe => recipe.title.includes('Burger'))
     },
-    // I believe these sortBy getters can be refactored into a single getter
-    // sortBy (state, sortBy, reverse) {
-    //   console.log('hi', state, sortBy, reverse)
-    //   const sortedArray = state.recipes.map(recipe => recipe[sortBy]).sort()
-
-    //   if (reverse) sortedArray.reverse()
-
-    //   const sortedObject = sortedArray.map(recipe => state.recipes.find(rep => rep[sortBy] === recipe))
-
-    //   return sortedObject
-    // },
+    // These sorting methods can be refactored into a single method
     sortByAlpha (state) {
       const sortedTitles = state.recipes.map(recipe => recipe.title).sort()
       const sortedRecipes = sortedTitles.map(recipe => state.recipes.find(rep => rep.title === recipe))
@@ -71,8 +64,11 @@ export default new Vuex.Store({
 
       return sortedRecipes
     },
-    searchList (state) {
-      return state.recipes.map(recipe => recipe.title)
+    sortByReverseDifficulty (state) {
+      const sortedDifficulties = state.recipes.map(recipe => recipe.difficulty).sort().reverse()
+      const sortedRecipes = sortedDifficulties.map(recipe => state.recipes.find(rep => rep.difficulty === recipe))
+
+      return sortedRecipes
     }
   },
   mutations: {

@@ -23,7 +23,7 @@ export default {
     ...mapState(['recipes'])
   },
   methods: {
-    ...mapGetters(['sortByBurgers', 'sortByAlpha', 'sortByReverseAlpha', 'sortByDifficulty']),
+    ...mapGetters(['sortByBurgers', 'sortByAlpha', 'sortByReverseAlpha', 'sortByDifficulty', 'sortByReverseDifficulty']),
     updateRecipes (recipe) {
       this.currentRecipe.title = recipe.title
       this.currentRecipe.imgUrl = recipe.imgUrl
@@ -33,6 +33,9 @@ export default {
     viewRecipe (recipe) {
       this.updateRecipes(recipe)
       this.isModalOpen = true
+    },
+    printRecipe () {
+      window.print()
     }
   },
   created () {
@@ -46,14 +49,15 @@ export default {
     <Modal v-if="isModalOpen" @closeModal="isModalOpen=false">
       <h2>{{ currentRecipe.title }}</h2>
       <span>Difficulty Rating: {{ currentRecipe.difficulty }}</span><br />
-      <img :src="currentRecipe.imgUrl" width="150" alt="Picture of food">
-      <!-- setup if statement to pull placeholder image if no url is provided -->
+      <img :src="currentRecipe.imgUrl" width="150"><!-- alt attribute was left out so no placeholder text would show up if an image was not included -->
       <p>Directions: {{ currentRecipe.instructions }}</p>
+      <button class="print-recipe" @click="printRecipe()">Print Recipe</button>
     </Modal>
     <button @click="currentRecipes=sortByBurgers()">Burgers</button>
     <button @click="currentRecipes=sortByAlpha()">Title A-Z</button>
     <button @click="currentRecipes=sortByReverseAlpha()">Title Z-A</button>
-    <button @click="currentRecipes=sortByDifficulty()">Difficulty</button>
+    <button @click="currentRecipes=sortByDifficulty()">Difficulty Asc</button>
+    <button @click="currentRecipes=sortByReverseDifficulty()">Difficulty Des</button>
     <h1>Look at all the food!</h1>
     <div class="top-banner">
       <span>Title</span>
@@ -109,5 +113,21 @@ export default {
 
   li:last-child {
     padding-right: 36px;
+  }
+
+  @media (max-width: 600px) {
+    .view-recipes {
+      width: 100%;
+      border: none;
+      box-shadow: none;
+    }
+
+    .top-banner {
+      width: 85%;
+    }
+
+    .print-recipe {
+      display: none
+    }
   }
 </style>

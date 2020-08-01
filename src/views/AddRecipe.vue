@@ -210,7 +210,7 @@ export default {
   @media (max-width: 600px) {
     form {
       border: none;
-      width: 100%;
+      width: 85%;
       box-shadow: none;
     }
 

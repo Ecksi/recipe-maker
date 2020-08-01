@@ -16,4 +16,10 @@ export default {
   .landing {
     text-align: center;
   }
+
+  @media (max-width: 600px) {
+    .landing {
+      padding: 16px;
+    }
+  }
 </style>

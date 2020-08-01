@@ -22,4 +22,11 @@ export default {
   span {
     font-size: 12px;
   }
+
+  @media (max-width: 600px) {
+    footer {
+      margin: 16px;
+      width: auto;
+    }
+  }
 </style>
