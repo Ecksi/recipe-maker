@@ -6,7 +6,7 @@ export default {
   data () {
     return {
       title: '',
-      imageUrl: '',
+      imgUrl: '',
       difficulty: '',
       instructions: '',
       errors: {
@@ -23,7 +23,7 @@ export default {
     onSubmit () {
       const recipe = {
         title: this.title,
-        imageUrl: this.imageUrl,
+        imgUrl: this.imgUrl,
         difficulty: this.difficulty,
         instructions: this.instructions
       }
@@ -48,7 +48,7 @@ export default {
     },
     clearForm () {
       this.title = ''
-      this.imageUrl = ''
+      this.imggUrl = ''
       this.difficulty = ''
       this.instructions = ''
     }
@@ -67,7 +67,7 @@ export default {
       <label for="recipe-img">
         <!-- if no image use placehodler for default -->
         <span>Image:</span>
-        <input id="recipe-img" v-model="imageUrl" type="text" placeholder="Add img url">
+        <input id="recipe-img" v-model="imgUrl" type="text" placeholder="Add img url">
       </label>
       <section class="difficulty">
         <span class="difficulty-label">Difficulty:</span>

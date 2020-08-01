@@ -46,7 +46,7 @@ export default {
     <Modal v-if="isModalOpen" @closeModal="isModalOpen=false">
       <h2>{{ currentRecipe.title }}</h2>
       <span>Difficulty Rating: {{ currentRecipe.difficulty }}</span><br />
-      <img :src="currentRecipe.imgUrl" width="150" alt="">
+      <img :src="currentRecipe.imgUrl" width="150" alt="Picture of food">
       <!-- setup if statement to pull placeholder image if no url is provided -->
       <p>Directions: {{ currentRecipe.instructions }}</p>
     </Modal>
@@ -81,7 +81,7 @@ export default {
     justify-content: space-between;
     padding: 12px;
     font-weight: bold;
-    background-color: cornflowerblue;
+    background-color: #75a6ff6b;
     border: 1px solid black;
   }
 
