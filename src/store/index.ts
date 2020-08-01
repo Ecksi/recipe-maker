@@ -70,6 +70,9 @@ export default new Vuex.Store({
       const sortedRecipes = sortedDifficulties.map(recipe => state.recipes.find(rep => rep.difficulty === recipe))
 
       return sortedRecipes
+    },
+    searchList (state) {
+      return state.recipes.map(recipe => recipe.title)
     }
   },
   mutations: {
