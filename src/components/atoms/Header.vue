@@ -130,12 +130,22 @@ export default {
       display: flex;
       flex-direction: column;
       text-align: right;
+      padding-top: 12px;
+      padding-right: 6px;
     }
 
-    nav label,
-    a {
-      margin-right: 24px;
+    nav label {
       margin-top: 6px;
+      margin-right: 0;
+    }
+
+    a {
+      margin-top: 6px;
+      margin-right: 16px;
+    }
+
+    input {
+      width: 155px;
     }
 
     .food-logo {
