@@ -32,7 +32,7 @@ export default {
   .site-container {
     position: relative;
     padding-bottom: 60px;
-    min-height: 100%;
+    min-height: calc(100% - 60px);
     background-image: url("./assets/img/food-bg.jpg");
     background-color: #EEE;
     background-position: center;

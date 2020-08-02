@@ -1,4 +1,4 @@
-<script>
+<script script="ts">
 export default {
   name: 'Modal'
 }

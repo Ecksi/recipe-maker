@@ -1,29 +1,32 @@
-<script>
-import { mapGetters } from 'vuex'
+<script lang="ts">
+import { Vue } from 'vue-property-decorator'
+import { Getter } from 'vuex-class'
 
-export default {
-  name: 'Header',
-  data () {
-    return {
-      isOpen: false,
-      results: [],
-      search: ''
-    }
-  },
-  methods: {
-    ...mapGetters(['searchList']),
-    onChange () {
-      this.search.length ? this.isOpen = true : this.isOpen = false
-      this.filterResults()
-    },
-    filterResults () {
-      this.results = this.searchList().filter(item => item.toLowerCase().indexOf(this.search.toLowerCase()) > -1)
-    },
-    setResult (result) {
-      this.search = result
-      this.isOpen = false
-      // navigate to viewrecipes - clear search bar
-    }
+export default class Header extends Vue {
+  @Getter('searchList')
+
+  myData: {
+    isOpen: boolean;
+    results: Array<string>;
+    search: string;
+  } = {
+    isOpen: false,
+    results: [],
+    search: ''
+  };
+
+  onChange (): void {
+    this.myData.search.length ? this.myData.isOpen = true : this.myData.isOpen = false
+    this.filterResults()
+  }
+
+  filterResults (): void {
+    this.myData.results = this.searchList.filter((item: string) => item.toLowerCase().indexOf(this.myData.search.toLowerCase()) > -1)
+  }
+
+  setResult (result: string): void {
+    this.myData.search = result
+    this.myData.isOpen = false
   }
 }
 </script>
@@ -40,14 +43,14 @@ export default {
         <input id="recipe-search" v-model="search" @input="onChange" type="text" placeholder="Find a recipe">
         <ul v-show="isOpen" class="autocomplete-results">
           <router-link to="/view">
-          <li
-            v-for="(result, i) in results"
-            :key="i"
-            @click="setResult(result)"
-            class="autocomplete-result"
-          >
-            {{ result }}
-          </li>
+            <li
+              v-for="(result, i) in results"
+              :key="i"
+              @click="setResult(result)"
+              class="autocomplete-result"
+            >
+              {{ result }}
+            </li>
           </router-link>
         </ul>
         <span class="clear-search" @click="search=''">X</span>

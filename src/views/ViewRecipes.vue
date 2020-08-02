@@ -1,45 +1,62 @@
-<script>
+<script lang="ts">
+import { Vue } from 'vue-property-decorator'
+import Component from 'vue-class-component'
+import { Recipe } from '../store/recipes/types'
 import { mapState, mapGetters } from 'vuex'
-import Modal from '@/components/molecules/Modal'
+import Modal from '../components/molecules/Modal.vue'
 
-export default {
-  name: 'ViewRecipes',
+@Component({
   components: {
     Modal
   },
-  data () {
-    return {
-      currentRecipes: '',
-      isModalOpen: false,
-      currentRecipe: {
-        title: '',
-        imgUrl: '',
-        difficulty: '',
-        instructions: ''
-      }
-    }
-  },
   computed: {
-    ...mapState(['recipes'])
+    ...mapState('recipes', ['recipes'])
   },
   methods: {
-    ...mapGetters(['sortByBurgers', 'sortByAlpha', 'sortByReverseAlpha', 'sortByDifficulty', 'sortByReverseDifficulty']),
-    updateRecipes (recipe) {
-      this.currentRecipe.title = recipe.title
-      this.currentRecipe.imgUrl = recipe.imgUrl
-      this.currentRecipe.difficulty = recipe.difficulty
-      this.currentRecipe.instructions = recipe.instructions
-    },
-    viewRecipe (recipe) {
-      this.updateRecipes(recipe)
-      this.isModalOpen = true
-    },
-    printRecipe () {
-      window.print()
+    ...mapGetters('recipes', ['sortByBurgers', 'sortByAlpha', 'sortByReverseAlpha', 'sortByDifficulty', 'sortByReverseDifficulty'])
+  }
+})
+export default class ViewRecipes extends Vue {
+  public recipes!: Array<Recipe>
+  public sortByBurgers!: Array<Recipe>
+  public sortByAlpha!: Array<Recipe>
+  public sortByReverseAlpha!: Array<Recipe>
+  public sortByDifficulty!: Array<Recipe>
+  public sortByReverseDifficulty!: Array<Recipe>
+
+  myData: {
+    currentRecipes: Array<Recipe>;
+    isModalOpen: boolean;
+    currentRecipe: Recipe;
+  } = {
+    currentRecipes: [],
+    isModalOpen: false,
+    currentRecipe: {
+      title: '',
+      imgUrl: '',
+      difficulty: '',
+      instructions: ''
     }
-  },
+  }
+
+  updateRecipes (recipe: Recipe) {
+    this.myData.currentRecipe.title = recipe.title
+    this.myData.currentRecipe.imgUrl = recipe.imgUrl
+    this.myData.currentRecipe.difficulty = recipe.difficulty
+    this.myData.currentRecipe.instructions = recipe.instructions
+  }
+
+  viewRecipe (recipe: Recipe) {
+    this.updateRecipes(recipe)
+    this.myData.isModalOpen = true
+  }
+
+  printRecipe () {
+    window.print()
+  }
+
   created () {
-    this.currentRecipes = this.recipes
+    this.myData.currentRecipes = this.recipes
   }
 }
 </script>
